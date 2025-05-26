@@ -1,4 +1,4 @@
-package com.salonperu.server.models.dto;
+package com.salonperu.server.model.dto;
 
 public class LoginRequest {
     public String email;

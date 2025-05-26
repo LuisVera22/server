@@ -1,18 +1,20 @@
-package com.salonperu.server.controllers;
+package com.salonperu.server.controller;
 
-import com.salonperu.server.models.Usuario;
-import com.salonperu.server.models.dto.LoginRequest;
-import com.salonperu.server.services.AuthService;
+import com.salonperu.server.model.Usuario;
+import com.salonperu.server.model.dto.LoginRequest;
+import com.salonperu.server.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("api/auth")
 public class AuthController {
     @Autowired
     private AuthService authService;

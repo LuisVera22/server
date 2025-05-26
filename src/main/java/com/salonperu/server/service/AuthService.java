@@ -1,9 +1,7 @@
-package com.salonperu.server.services;
+package com.salonperu.server.service;
 
-import com.salonperu.server.models.Usuario;
-import com.salonperu.server.repositories.IUsuarioRepository;
-import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
+import com.salonperu.server.model.Usuario;
+import com.salonperu.server.repository.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -11,20 +9,20 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class AuthService {
+
     @Autowired
-    private IUsuarioRepository usuarioRepository;
+    private IUsuarioRepository repoUsuario;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     public boolean existeUsuario(String email) {
-        return usuarioRepository.existsByEmail(email);
+        return repoUsuario.existsByEmail(email);
     }
 
     public Optional<Usuario> login(String email, String password) {
-        Optional<Usuario> usuarioOpt = usuarioRepository.findByEmail(email);
+        Optional<Usuario> usuarioOpt = repoUsuario.findByEmail(email);
 
         if (usuarioOpt.isPresent()) {
             Usuario usuario = usuarioOpt.get();
@@ -40,6 +38,6 @@ public class AuthService {
     public Usuario registrarUsuario(Usuario usuario) {
         String claveCodificada = passwordEncoder.encode(usuario.getPassword());
         usuario.setPassword(claveCodificada);
-        return usuarioRepository.save(usuario);
+        return repoUsuario.save(usuario);
     }
 }
