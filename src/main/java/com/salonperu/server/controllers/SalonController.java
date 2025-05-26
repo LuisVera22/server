@@ -159,7 +159,7 @@ public class SalonController {
             // Escribir el archivo
             Files.createDirectories(path.getParent());  // Asegurarse de que el directorio exista
             Files.write(path, imageBytes);  // Guardar el archivo
-            return "/images/" + fileName;  // Retorna la URL para acceder a la imagen (servida como recurso estático)
+            return "/images-saved/" + fileName;  // Retorna la URL para acceder a la imagen (servida como recurso estático)
         } catch (IOException e) {
             throw new RuntimeException("Error al guardar la imagen", e);
         }
