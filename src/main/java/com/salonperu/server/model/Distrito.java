@@ -16,8 +16,4 @@ public class Distrito {
     private String distrito;
     private byte estado;
     private int idprovincia;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "iddepartamento", insertable = false, updatable = false)
-    private Departamento objDepartamento;
 }

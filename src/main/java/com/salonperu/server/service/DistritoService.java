@@ -12,7 +12,7 @@ public class DistritoService {
     @Autowired
     private IDistritoRepository repoDistrito;
 
-    public List<Distrito> getDistritos() {
+    public List<Distrito> getAllDistritos() {
         return repoDistrito.findAll();
     }
 }
